@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómputo de Horas PAC Sarria 2024</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3 {
+            color: #333;
+            font-weight: bold;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .calculator {
+            margin-top: 20px;
+        }
+        .calculator input {
+            margin: 5px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .calculator button {
+            padding: 10px;
+            width: 100%;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calculator button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+        .legal-notice {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cómputo de Horas PAC Sarria 2024</h1>
+        <p>Horas mensuales: 125h al mes (el mes de vacaciones va descontado).</p>
+        <p>Cómputo anual de horas: 125h x 11 meses = 1375h anuales.</p>
+        <h2>Jornada complementaria</h2>
+        <p>De 125h a 145h: Se liquidan a año vencido en un único pago.</p>
+        <p>A partir de 145h: Se liquidan a mes vencido.</p>
+        <h2>Permisos</h2>
+        <p>Descuento de horas: Los permisos descuentan del cómputo a razón de 4.1h por día (125h/30 días = 4.1h).</p>
+        <h3>Ejemplo típico de pérdida de horas</h3>
+        <p>Permiso por enfermedad grave familiar:</p>
+        <p>Pedimos 2 días (4.1h x 2 = 8.2h).</p>
+        <p>Dejamos de hacer una guardia de 17h.</p>
+        <p>Descuento: 1375h - 8.2h = 1366h.</p>
+        <p>Pérdida respecto a la liquidación para jornada complementaria: 17h - 8.2h = 8.8h.</p>
+        <p>Recomendación: Pedir el día anterior y el propio día de la guardia (2 días), así hasta las 12 de la noche serían 9h, descontando 8.2h del cómputo, perdiendo apenas 1h.</p>
+        <h3>Otro ejemplo</h3>
+        <p>Permiso de matrimonio de 15 días:</p>
+        <p>Descuento: 15 días x 4.1h = 61.5h.</p>
+        <p>Dejamos de hacer 3 guardias de 17h y una de 24h (total 75h).</p>
+        <p>Pérdida: 75h - 61.5h = 13.5h.</p>
+        <p>Liquidación: 1375h - 61.5h = 1313.5h.</p>
+        <p>Solución: Ajustar los 15 días de permiso a 3 guardias de 17h (51h), ganando 10.5h en la liquidación anual para la jornada complementaria.</p>
+        <h3>Ejemplo adicional de exceso de horas</h3>
+        <p>Horas trabajadas en el año: 1632h.</p>
+        <p>Restar mes de vacaciones: 1632h - 125h = 1507h.</p>
+        <p>Cómputo anual: 1507h - 1375h = 132h (horas a liquidar como jornada complementaria).</p>
+        <h3>Ajustes por vacaciones y permisos</h3>
+        <p>Vacaciones de un mes (143h):</p>
+        <p>Pérdida: 143h - 125h = 18h.</p>
+        <p>Liquidación: 132h - 18h = 114h.</p>
+        <p>Permisos remunerados (5 días):</p>
+        <p>Descuento: 5 días x 4.1h = 20.5h.</p>
+        <p>Guardias no realizadas: 2 guardias de 17h = 34h.</p>
+        <p>Pérdida: 34h - 20.5h = 13.5h.</p>
+        <p>Liquidación final: 132h - 18h - 13.5h = 100.5h.</p>
+        <h3>Días de libre disposición</h3>
+        <p>Descuento de horas: Los días de libre disposición descuentan 7h del cómputo anual.</p>
+        <h3>Ejemplo de días de libre disposición</h3>
+        <p>Supuesto: Pedimos 2 días de libre disposición para no hacer una guardia de 17h.</p>
+        <p>Descuento: 2 días x 7h = 14h.</p>
+        <p>Guardias no realizadas: 1 guardia de 17h.</p>
+        <p>Pérdida: 17h - 14h = 3h.</p>
+        <p>Liquidación: 132h - 3h = 129h (horas a liquidar como jornada complementaria).</p>
+        <h3>Notas adicionales</h3>
+        <p>Menos de 125h: No se descuenta en la nomina mensual (siempre y cuando no se cobre jornada complementaria en la liquidación anual)</p>
+        <p>Cómputo anual: 1375h - permisos a razón de 4.1h por día.</p>
+
+        <div class="calculator">
+            <h2>Calculadora de Jornada Complementaria</h2>
+            <label for="hoursWorked">Número de horas presenciales en el PAC:</label>
+            <input type="number" id="hoursWorked" placeholder="Introduce las horas trabajadas">
+            <label for="paidLeaveDays">Días de permisos remunerados:</label>
+            <input type="number" id="paidLeaveDays" placeholder="Introduce los días de permisos remunerados">
+            <label for="freeDays">Días de libre disposición:</label>
+            <input type="number" id="freeDays" placeholder="Introduce los días de libre disposición">
+            <button onclick="calculateComplementaryHours()">Calcular Jornada Complementaria</button>
+            <div class="result" id="result"></div>
+            <div class="legal-notice" id="legalNotice"></div>
+        </div>
+    </div>
+
+    <script>
+        function calculateComplementaryHours() {
+            const hoursWorked = parseFloat(document.getElementById('hoursWorked').value);
+            const paidLeaveDays = parseFloat(document.getElementById('paidLeaveDays').value) || 0;
+            const freeDays = parseFloat(document.getElementById('freeDays').value) || 0;
+
+            let complementaryHours = 0;
+
+            if (hoursWorked > 1375) {
+                complementaryHours = (hoursWorked - 1375) + (paidLeaveDays * 4.1) + (freeDays * 7);
+            }
+
+            document.getElementById('result').innerText = `Horas de jornada complementaria: ${complementaryHours.toFixed(2)}`;
+            document.getElementById('legalNotice').innerText = 'Aviso Legal: Esto puede contener errores, no me hago responsable de ellos ni de su uso incorrecto.';
+        }
+    </script>
+</body>
+</html>
+Creado por Eloy Díaz Villaverde
