@@ -10,25 +10,30 @@
             margin: 20px;
             background-color: #f0f4f3;
         }
+
         h1, h2, h3 {
             color: #333;
             font-weight: bold;
             text-align: center;
         }
+
         .container {
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .calculator {
-            margin-top: 20px;
-        }
+
         label {
             display: block;
             margin: 10px 0 5px;
+            color: #555;
         }
+
         input[type="number"] {
             padding: 10px;
             width: 100%;
@@ -37,19 +42,22 @@
             border-radius: 4px;
             margin-bottom: 10px;
         }
+
         button {
             padding: 10px;
             width: 100%;
             background-color: #28a745;
-            color: #fff;
+            color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
         }
+
         button:hover {
             background-color: #218838;
         }
+
         .result {
             margin-top: 20px;
             padding: 15px;
@@ -58,6 +66,7 @@
             font-weight: bold;
             text-align: center;
         }
+
         .legal-notice {
             margin-top: 10px;
             font-size: 0.9em;
@@ -70,6 +79,7 @@
 
     <h1>Cómputo de Horas PAC Sarria 2024</h1>
 
+    <!-- Calculadora de Horas Complementarias Mensuales -->
     <div class="container">
         <h2>Horas Complementarias Mensuales</h2>
         <label for="horas-trabajadas">Horas presenciales trabajadas:</label>
@@ -88,20 +98,26 @@
         </div>
     </div>
 
+    <!-- Calculadora de Jornada Complementaria Anual -->
     <div class="container">
         <h2>Calculadora de Jornada Complementaria Anual</h2>
         <label for="hoursWorked">Número de horas presenciales en el PAC:</label>
         <input type="number" id="hoursWorked" placeholder="Introduce las horas trabajadas">
+        
         <label for="paidLeaveDays">Días de permisos remunerados:</label>
         <input type="number" id="paidLeaveDays" placeholder="Introduce los días de permisos remunerados">
+        
         <label for="freeDays">Días de libre disposición:</label>
         <input type="number" id="freeDays" placeholder="Introduce los días de libre disposición">
+        
         <button onclick="calculateComplementaryHours()">Calcular Jornada Complementaria</button>
+
         <div class="result" id="result"></div>
         <div class="legal-notice" id="legalNotice"></div>
     </div>
 
     <script>
+        // Función para la calculadora de horas complementarias mensuales
         function calcular() {
             const horasTrabajadas = parseFloat(document.getElementById('horas-trabajadas').value);
             const diasPermiso = parseFloat(document.getElementById('dias-permiso').value);
@@ -131,6 +147,7 @@
             `;
         }
 
+        // Función para la calculadora de jornada complementaria anual
         function calculateComplementaryHours() {
             const hoursWorked = parseFloat(document.getElementById('hoursWorked').value);
             const paidLeaveDays = parseFloat(document.getElementById('paidLeaveDays').value) || 0;
@@ -149,4 +166,5 @@
 
 </body>
 </html>
+
 
