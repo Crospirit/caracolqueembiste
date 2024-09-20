@@ -8,68 +8,97 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            background-color: #f4f4f4;
+            background-color: #f0f4f3;
         }
         h1, h2, h3 {
             color: #333;
             font-weight: bold;
+            text-align: center;
         }
         .container {
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
         .calculator {
             margin-top: 20px;
         }
-        .calculator input {
-            margin: 5px 0;
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="number"] {
             padding: 10px;
             width: 100%;
             box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
         }
-        .calculator button {
+        button {
             padding: 10px;
             width: 100%;
-            background-color: #007BFF;
+            background-color: #28a745;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
         }
-        .calculator button:hover {
-            background-color: #0056b3;
+        button:hover {
+            background-color: #218838;
         }
         .result {
             margin-top: 20px;
-            padding: 10px;
+            padding: 15px;
             background-color: #e9ecef;
             border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
         }
         .legal-notice {
             margin-top: 10px;
             font-size: 0.9em;
             color: #555;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-  <h1>Horas Complementarias Mensuales</h1>
 
-    <label for="horas-trabajadas">Horas presenciales trabajadas:</label>
-    <input type="number" id="horas-trabajadas" placeholder="Ej. 150">
+    <h1>Cómputo de Horas PAC Sarria 2024</h1>
 
-    <label for="dias-permiso">Días de permiso con sueldo:</label>
-    <input type="number" id="dias-permiso" placeholder="Ej. 1">
+    <div class="container">
+        <h2>Horas Complementarias Mensuales</h2>
+        <label for="horas-trabajadas">Horas presenciales trabajadas:</label>
+        <input type="number" id="horas-trabajadas" placeholder="Ej. 150">
 
-    <label for="dias-ld">Días de libre disposición:</label>
-    <input type="number" id="dias-ld" placeholder="Ej. 1">
+        <label for="dias-permiso">Días de permiso con sueldo:</label>
+        <input type="number" id="dias-permiso" placeholder="Ej. 1">
 
-    <button onclick="calcular()">Calcular</button>
+        <label for="dias-ld">Días de libre disposición:</label>
+        <input type="number" id="dias-ld" placeholder="Ej. 1">
 
-    <div class="result" id="resultado">
-        <!-- Aquí se mostrarán los resultados -->
+        <button onclick="calcular()">Calcular</button>
+
+        <div class="result" id="resultado">
+            <!-- Aquí se mostrarán los resultados -->
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Calculadora de Jornada Complementaria Anual</h2>
+        <label for="hoursWorked">Número de horas presenciales en el PAC:</label>
+        <input type="number" id="hoursWorked" placeholder="Introduce las horas trabajadas">
+        <label for="paidLeaveDays">Días de permisos remunerados:</label>
+        <input type="number" id="paidLeaveDays" placeholder="Introduce los días de permisos remunerados">
+        <label for="freeDays">Días de libre disposición:</label>
+        <input type="number" id="freeDays" placeholder="Introduce los días de libre disposición">
+        <button onclick="calculateComplementaryHours()">Calcular Jornada Complementaria</button>
+        <div class="result" id="result"></div>
+        <div class="legal-notice" id="legalNotice"></div>
     </div>
 
     <script>
@@ -101,23 +130,7 @@
                 <p><strong>Horas a liquidar a final de mes:</strong> ${horasLiquidarMes.toFixed(2)} horas</p>
             `;
         }
-    </script>  
 
-        <div class="calculator">
-            <h2>Calculadora de Jornada Complementaria Anual</h2>
-            <label for="hoursWorked">Número de horas presenciales en el PAC:</label>
-            <input type="number" id="hoursWorked" placeholder="Introduce las horas trabajadas">
-            <label for="paidLeaveDays">Días de permisos remunerados:</label>
-            <input type="number" id="paidLeaveDays" placeholder="Introduce los días de permisos remunerados">
-            <label for="freeDays">Días de libre disposición:</label>
-            <input type="number" id="freeDays" placeholder="Introduce los días de libre disposición">
-            <button onclick="calculateComplementaryHours()">Calcular Jornada Complementaria</button>
-            <div class="result" id="result"></div>
-            <div class="legal-notice" id="legalNotice"></div>
-        </div>
-    </div>
-
-    <script>
         function calculateComplementaryHours() {
             const hoursWorked = parseFloat(document.getElementById('hoursWorked').value);
             const paidLeaveDays = parseFloat(document.getElementById('paidLeaveDays').value) || 0;
@@ -133,6 +146,7 @@
             document.getElementById('legalNotice').innerText = 'Aviso Legal: Esto puede contener errores, no me hago responsable de ellos ni de su uso incorrecto.';
         }
     </script>
+
 </body>
 </html>
-Creado por Eloy Díaz Villaverde
+
