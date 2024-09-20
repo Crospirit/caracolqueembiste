@@ -55,56 +55,56 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Cómputo de Horas PAC Sarria 2024</h1>
-        <p>Horas mensuales: 125h al mes (el mes de vacaciones va descontado).</p>
-        <p>Cómputo anual de horas: 125h x 11 meses = 1375h anuales.</p>
-        <h2>Jornada complementaria</h2>
-        <p>De 125h a 145h: Se liquidan a año vencido en un único pago.</p>
-        <p>A partir de 145h: Se liquidan a mes vencido.</p>
-        <h2>Permisos</h2>
-        <p>Descuento de horas: Los permisos descuentan del cómputo a razón de 4.1h por día (125h/30 días = 4.1h).</p>
-        <h3>Ejemplo típico de pérdida de horas</h3>
-        <p>Permiso por enfermedad grave familiar:</p>
-        <p>Pedimos 2 días (4.1h x 2 = 8.2h).</p>
-        <p>Dejamos de hacer una guardia de 17h.</p>
-        <p>Descuento: 1375h - 8.2h = 1366h.</p>
-        <p>Pérdida respecto a la liquidación para jornada complementaria: 17h - 8.2h = 8.8h.</p>
-        <p>Recomendación: Pedir el día anterior y el propio día de la guardia (2 días), así hasta las 12 de la noche serían 9h, descontando 8.2h del cómputo, perdiendo apenas 1h.</p>
-        <h3>Otro ejemplo</h3>
-        <p>Permiso de matrimonio de 15 días:</p>
-        <p>Descuento: 15 días x 4.1h = 61.5h.</p>
-        <p>Dejamos de hacer 3 guardias de 17h y una de 24h (total 75h).</p>
-        <p>Pérdida: 75h - 61.5h = 13.5h.</p>
-        <p>Liquidación: 1375h - 61.5h = 1313.5h.</p>
-        <p>Solución: Ajustar los 15 días de permiso a 3 guardias de 17h (51h), ganando 10.5h en la liquidación anual para la jornada complementaria.</p>
-        <h3>Ejemplo adicional de exceso de horas</h3>
-        <p>Horas trabajadas en el año: 1632h.</p>
-        <p>Restar mes de vacaciones: 1632h - 125h = 1507h.</p>
-        <p>Cómputo anual: 1507h - 1375h = 132h (horas a liquidar como jornada complementaria).</p>
-        <h3>Ajustes por vacaciones y permisos</h3>
-        <p>Vacaciones de un mes (143h):</p>
-        <p>Pérdida: 143h - 125h = 18h.</p>
-        <p>Liquidación: 132h - 18h = 114h.</p>
-        <p>Permisos remunerados (5 días):</p>
-        <p>Descuento: 5 días x 4.1h = 20.5h.</p>
-        <p>Guardias no realizadas: 2 guardias de 17h = 34h.</p>
-        <p>Pérdida: 34h - 20.5h = 13.5h.</p>
-        <p>Liquidación final: 132h - 18h - 13.5h = 100.5h.</p>
-        <h3>Días de libre disposición</h3>
-        <p>Descuento de horas: Los días de libre disposición descuentan 7h del cómputo anual.</p>
-        <h3>Ejemplo de días de libre disposición</h3>
-        <p>Supuesto: Pedimos 2 días de libre disposición para no hacer una guardia de 17h.</p>
-        <p>Descuento: 2 días x 7h = 14h.</p>
-        <p>Guardias no realizadas: 1 guardia de 17h.</p>
-        <p>Pérdida: 17h - 14h = 3h.</p>
-        <p>Liquidación: 132h - 3h = 129h (horas a liquidar como jornada complementaria).</p>
-        <h3>Notas adicionales</h3>
-        <p>Menos de 125h: No se descuenta en la nomina mensual (siempre y cuando no se cobre jornada complementaria en la liquidación anual)</p>
-        <p>Cómputo anual: 1375h - permisos a razón de 4.1h por día.</p>
+  <h1>Horas Complementarias Mensuales</h1>
+
+    <label for="horas-trabajadas">Horas presenciales trabajadas:</label>
+    <input type="number" id="horas-trabajadas" placeholder="Ej. 150">
+
+    <label for="dias-permiso">Días de permiso con sueldo:</label>
+    <input type="number" id="dias-permiso" placeholder="Ej. 1">
+
+    <label for="dias-ld">Días de libre disposición:</label>
+    <input type="number" id="dias-ld" placeholder="Ej. 1">
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div class="result" id="resultado">
+        <!-- Aquí se mostrarán los resultados -->
+    </div>
+
+    <script>
+        function calcular() {
+            const horasTrabajadas = parseFloat(document.getElementById('horas-trabajadas').value);
+            const diasPermiso = parseFloat(document.getElementById('dias-permiso').value);
+            const diasLD = parseFloat(document.getElementById('dias-ld').value);
+
+            const horasBase = 125;
+            const horasLimiteMensual = 145;
+            const horasPermiso = diasPermiso * 4.1;
+            const horasLD = diasLD * 7;
+            const horasTotales = horasBase + horasPermiso + horasLD;
+
+            let horasLiquidarFinAño = 0;
+            let horasLiquidarMes = 0;
+
+            if (horasTrabajadas > horasTotales) {
+                if (horasTrabajadas <= horasLimiteMensual) {
+                    horasLiquidarFinAño = horasTrabajadas - horasTotales;
+                } else {
+                    horasLiquidarFinAño = horasLimiteMensual - horasTotales;
+                    horasLiquidarMes = horasTrabajadas - horasLimiteMensual;
+                }
+            }
+
+            document.getElementById('resultado').innerHTML = `
+                <p><strong>Horas a liquidar a final de año:</strong> ${horasLiquidarFinAño.toFixed(2)} horas</p>
+                <p><strong>Horas a liquidar a final de mes:</strong> ${horasLiquidarMes.toFixed(2)} horas</p>
+            `;
+        }
+    </script>  
 
         <div class="calculator">
-            <h2>Calculadora de Jornada Complementaria</h2>
+            <h2>Calculadora de Jornada Complementaria Anual</h2>
             <label for="hoursWorked">Número de horas presenciales en el PAC:</label>
             <input type="number" id="hoursWorked" placeholder="Introduce las horas trabajadas">
             <label for="paidLeaveDays">Días de permisos remunerados:</label>
